@@ -3,20 +3,24 @@
 use strict;
 use warnings;
 
-open IFILE, '<', '../../data/string/counting.txt' or die('File not found');
+my %nucleotides = (
+  A => 0,
+  C => 0,
+  G => 0,
+  T => 0,
+);
 
-my @nucleotides = qw(0 0 0 0);
+my @order = qw(A C G T);
 
-while (my $line = <IFILE>) {
-  chomp $line;
-  
-  $nucleotides[0] += ($line =~ tr/A/g/);
-  $nucleotides[1] += ($line =~ tr/C/g/);
-  $nucleotides[2] += ($line =~ tr/G/g/);
-  $nucleotides[3] += ($line =~ tr/T/g/);
+while (my $line = <>) {
+  chomp $line;  
+  for my $letter ( keys( %nucleotides ) ) {
+    $nucleotides{$letter} += ( () = $line =~ /$letter/g );
+  }
 }
-close IFILE;
 
-open OFILE, '>', '../../output/string/counting.txt' or die('Can\'t create file');
-print OFILE join(" ", @nucleotides);
-close OFILE;
+my @output = @{nucleotides}{ @order };
+
+print join(' ', @output);
+
+__END__;
