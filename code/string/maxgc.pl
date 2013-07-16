@@ -2,16 +2,14 @@
 
 use strict;
 use warnings;
-use Data::Dumper;
 
 my %strings;
-my $label = 0;
 
 while (my $line = <>) {
   $line =~ s/^\s+|\s+$//g;
   
   if ($line =~ m/^\>(.+)$/) {
-    $label = $1;
+    my $label = $1;
     $strings{$label} = {
       data => '',
       size => 0,
