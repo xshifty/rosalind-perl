@@ -7,3 +7,5 @@ while (my $line = <>) {
   $line =~ s/T/U/gi;
   print $line;
 }
+
+__END__;

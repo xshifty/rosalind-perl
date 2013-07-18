@@ -17,3 +17,5 @@ while (my $line = <>) {
   my ($n, $k) = split ' ', $line;
   print fibonacci( $n, $k, (1, 1) );
 }
+
+__END__;

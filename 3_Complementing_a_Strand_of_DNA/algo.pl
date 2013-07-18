@@ -6,3 +6,5 @@ while (my $line = <>) {
   my $reversed = reverse $line;
   print "$reversed\n";
 }
+
+__END__;
