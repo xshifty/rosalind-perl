@@ -4,12 +4,13 @@ use strict;
 use warnings;
 
 my %strings;
+my $label;
 
 while (my $line = <>) {
   $line =~ s/^\s+|\s+$//g;
   
   if ($line =~ m/^\>(.+)$/) {
-    my $label = $1;
+    $label = $1;
     $strings{$label} = {
       data => '',
       size => 0,
